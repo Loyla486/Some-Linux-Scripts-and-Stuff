@@ -1,7 +1,7 @@
 #!/bin/bash
 # Intended for Debian/Unbuntu Based Distros, with 128GB+ (118GiB+) of storage and for gaming.
 # This is also intended for 32 bit support, gaming PCs, and/or general use PCs.
-# Version 6
+# Version 7
 
 # Start with hardinfo since newer versions requires attendance.
 sudo apt install -y hardinfo
@@ -10,8 +10,12 @@ sudo apt install -y hardinfo
 sudo apt install -y curl
 
 # Add Lutris Repository (Code taken from Lutris Website) https://lutris.net/downloads
-echo "deb [signed-by=/etc/apt/keyrings/lutris.gpg] https://download.opensuse.org/repositories/home:/strycore/Debian_12/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list > /dev/null
-wget -q -O- https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/lutris.gpg > /dev/null
+echo -e "Types: deb\nURIs: https://download.opensuse.org/repositories/home:/strycore:/lutris/Debian_13/\nSuites: ./\nComponents: \nSigned-By: /etc/apt/keyrings/lutris.gpg" | sudo tee /etc/apt/sources.list.d/lutris.sources > /dev/null
+wget -q -O- https://download.opensuse.org/repositories/home:/strycore:/lutris/Debian_13/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/lutris.gpg
+
+# Old Luris Repo
+# echo "deb [signed-by=/etc/apt/keyrings/lutris.gpg] https://download.opensuse.org/repositories/home:/strycore/Debian_12/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list > /dev/null
+# wget -q -O- https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/lutris.gpg > /dev/null
 
 # Add Brave Repository (Code taken from Brave Website) https://brave.com/linux/ Could also use: "curl -fsS https://dl.brave.com/install.sh | sh"
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -23,9 +27,13 @@ sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install -y wine
 
 # Install Apps/Libraries:
 
+# Add Flatpak + Flathub
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # Browsers
 sudo apt install -y brave-browser
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub net.waterfox.waterfox -y
 flatpak install flathub one.ablaze.floorp -y
 
 # Gaming Stuff
@@ -67,14 +75,12 @@ sudo apt install -y libvulkan1
 sudo apt install -y libvulkan1:i386
 sudo apt install -y brave-browser
 flatpak install flathub one.ablaze.floorp -y
+flatpak install flathub net.waterfox.waterfox -y
 sudo apt install -y hardinfo
 sudo apt install -y lm-sensors psensor
 sudo apt install -y neofetch
 sudo apt install -y htop
 sudo apt install -y git
-
-# Clean Package Cache
-sudo apt clean
 
 # Remove HyFetch if installed
 sudo apt remove hyfetch -y
