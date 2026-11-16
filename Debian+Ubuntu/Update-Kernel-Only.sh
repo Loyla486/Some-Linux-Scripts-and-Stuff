@@ -11,6 +11,10 @@ uname -r
 # Example: if your kernel is "linux-image-rpi", then replace the package name with
 # "sudo apt install linux-image-rpi linux-headers-rpi".
 
+# Ubuntu (or Linux Mint)
+sudo apt install linux-image-generic linux-headers-generic
+sudo apt install linux-generic-hwe
+
 # Update the lists first!
 sudo apt update
 
