@@ -12,23 +12,24 @@ uname -r
 ## Example: if your kernel is "linux-image-rpi", then replace the package name with
 ## "sudo apt install linux-image-rpi linux-headers-rpi".
 
-## Ubuntu (Including Mainline Linux Mint)
+# Ubuntu (Including Linux Mint, except LM:DE)
+sudo apt update
 sudo apt install linux-image-generic linux-headers-generic
 
 ## If you want/have the hwe kernel
 sudo apt install --install-recommends linux-generic-hwe-$(lsb_release -rs)
-
+#-------------
 ## Update the lists first!
 sudo apt update
-
-## Common kernels:
+#-------------
+# Common kernels:
 
 ## x86_64 Kernel
 sudo apt install linux-image-amd64 linux-headers-amd64
 
 ## General ARM64 Kernel
 sudo apt install linux-image-arm64 linux-headers-arm64
-
+#-------------
 ## Less common kernels?:
 
 ## X86_32 Kernel (PAE)
