@@ -1,4 +1,5 @@
 # USE AT YOUR OWN RISK, ONLY USE THE COMMAND THAT YOU INTEND TO USE!!!!!!
+# PLEASE READ THROUGH BEFORE USING COMMANDS!!!
 
 # Reduce people from just copying and pasting this whole thing into the terminal.
 pause
