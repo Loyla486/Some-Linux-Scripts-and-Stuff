@@ -14,13 +14,15 @@ uname -r
 # Update the lists first!
 sudo apt update
 
+# Common kernels:
+
 # x86_64 Kernel
 sudo apt install linux-image-amd64 linux-headers-amd64
 
 # General ARM64 Kernel
 sudo apt install linux-image-arm64 linux-headers-arm64
 
-# Less common kernels
+# Less common kernels?:
 
 # X86_32 Kernel (PAE)
 grep pae /proc/cpuinfo
