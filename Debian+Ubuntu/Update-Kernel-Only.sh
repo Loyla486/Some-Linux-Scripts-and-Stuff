@@ -1,0 +1,32 @@
+# update the kernel only
+# USE AT YOUR OWN RISK, ONLY USE THE COMMAND THAT YOU INTEND TO USE!!!!!!
+# Prevent people from just copying and pasting this "script".
+pause
+exit
+
+# Check kernel type installed
+dpkg -l | grep linux-image
+uname -a
+uname -r
+
+#General x86_64 Kernel
+sudo apt install linux-image-amd64 linux-headers-amd64
+
+#General ARM64 Kernel
+sudo apt install linux-image-arm64 linux-headers-arm64
+
+# Less common kernels
+
+# X86_32 Kernel (PAE)
+grep pae /proc/cpuinfo
+sudo apt install linux-image-686-pae linux-headers-686-pae
+
+# X86_32 Kernel
+sudo apt install linux-image-686 linux-headers-686
+
+#ARM32 Kernel
+sudo apt install linux-image-armmp linux-headers-armmp
+
+#ARM64 16k Page
+getconf PAGE_SIZE
+sudo apt install linux-image-arm64-16k linux-headers-arm64-16k
