@@ -1,6 +1,6 @@
 # USE AT YOUR OWN RISK, ONLY USE THE COMMAND THAT YOU INTEND TO USE!!!!!!
 
-# Reduce people from just copying and pasting this whole thing into the terminal. 
+# Reduce people from just copying and pasting this whole thing into the terminal.
 pause
 exit
 
@@ -8,6 +8,9 @@ exit
 dpkg -l | grep linux-image
 uname -a
 uname -r
+
+# Update the lists first!
+sudo apt update
 
 # x86_64 Kernel
 sudo apt install linux-image-amd64 linux-headers-amd64
