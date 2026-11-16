@@ -4,7 +4,7 @@
 pause
 exit
 
-# Check kernel type installed
+# Check kernel package/version installed
 dpkg -l | grep linux-image
 uname -a
 uname -r
